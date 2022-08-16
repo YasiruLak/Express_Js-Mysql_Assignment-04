@@ -1,5 +1,18 @@
 const express = require('express')
 const router = express.Router()
+const mysql = require('mysql')
+const db = require('../configs/db.configs')
+
+const connection = mysql.createConnection(db.database)
+
+connection.connect(function(err) {
+    if(err) {
+        console.log(err);
+    } else {
+        console.log('Connected to the MySQL server');
+    }
+})
+
 
 router.get('/',(req, res) =>{
     res.send('user get')
